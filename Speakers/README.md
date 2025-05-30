@@ -44,4 +44,4 @@ After you turn on the device, you can hear sound from the speaker. But you need 
 ### 3. After you pair with it successfully, connect it
 ![image](https://github.com/user-attachments/assets/cdf1a293-7707-4bea-939b-78946b123b34)
 
-### 4. To control the volume, right-click the volume icon in the system tray and select the speakers.
+### 4. To control the volume, right-click the volume icon in the system tray and select the speakers. You can now use the volume control by (left-)clicking on the speaker icon. 
