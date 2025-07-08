@@ -18,3 +18,17 @@ In this way, you have installed the screen driver on this operating system and i
 Unless this operating system does not support the Pi 5, it should generally be able to display the image on this screen.
 
 ### Also note that the default hardware I2C and SPI gpios are used for the display. So remember to disable them in the OS
+
+# Fix shifted pixel at first col
+
+You might see there is shifted pixel at the first col of the display like this:
+![image](https://github.com/user-attachments/assets/87f9b68f-430e-497b-a978-2f8b670889f9)
+
+Here is the solution to fix that:
+
+```Step1``` Download the ```hackberrypi.dtbo``` file in this page   
+```Step2``` Put the file into the ```/overlay``` folder of the image disk   
+```Step3``` Delete ```dtoverlay=vc4-kms-dpi-hyperpixel4sq``` and paste the following into the ```/boot/config.txt```  
+```sh
+dtoverlay=hackberrypi
+```
