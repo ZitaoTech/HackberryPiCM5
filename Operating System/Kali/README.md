@@ -2,7 +2,7 @@
 
 ### Kali Linux is a Linux distribution designed for digital forensics and penetration testing. It is maintained and funded by Offensive Security.
 
-```Step1```Download and install the kali image from pi imager into a tf card```Main Menu-> other specfic purpose os->kali linux```
+```Step1```Download and install the kali image from pi imager into a tf card```Main Menu-> other specfic purpose os->kali linux```  
 ```Step2``` Copy the following content into the config.txt and override  
 ```Step3``` Insert the TF card into the HackberryPi_CM5 and power it on, wait a few seconds and you can see it booting  
 
