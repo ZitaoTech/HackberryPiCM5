@@ -1,0 +1,79 @@
+/dts-v1/;
+/plugin/;
+/ {
+	compatible = "brcm,bcm2712", "raspberrypi,5-compute-module";
+	fragment@0 {
+		target-path = "/";
+		__overlay__ {
+			i2c_gpio: i2c-gpio@0 {
+				compatible = "i2c-gpio";
+				gpios = <&rp1_gpio 10 0
+				&rp1_gpio 11 0>;
+				i2c-gpio,delay-us = <4>;
+				#address-cells = <1>;
+				#size-cells = <0>;
+				
+				touch: edt-ft5x06@48 {
+					#address-cells = <1>;
+					#size-cells = <0>;
+					compatible = "edt,edt-ft5406";
+					reg = <0x48>;
+					interrupt-parent = <&gpio>;
+					interrupts = <27 0x2008>;
+					touchscreen-size-x = <720>;
+					touchscreen-size-y = <720>;
+				};
+			};
+		};
+	};
+	
+	fragment@1 {
+		target = <&dpi>;
+		__overlay__ {
+			status = "okay";
+			pinctrl-names = "default";
+			pinctrl-0 = <&dpi_18bit_cpadhi_gpio0>;
+			port {
+				dpi_out: endpoint {
+					remote-endpoint = <&panel_in>;
+				};
+			};
+		};
+	};
+	
+	fragment@2 {
+		target-path = "/";
+		__overlay__ {
+			panel: panel@0 {
+				compatible = "panel-dpi";
+				
+				width-mm = <86>;
+				height-mm = <86>;
+				bus-format = <0x1024>;
+				
+				timing: panel-timing {
+					clock-frequency = <35000000>;
+					hactive = <720>;
+					hfront-porch = <44>;
+					hsync-len = <2>;
+					hback-porch = <46>;
+					hsync-active = <1>;
+					vactive = <720>;
+					vfront-porch = <16>;
+					vsync-len = <2>;
+					vback-porch = <18>;
+					vsync-active = <1>;
+					
+					de-active = <1>;
+					pixelclk-active = <1>;
+				};
+				
+				port {
+					panel_in: endpoint {
+						remote-endpoint = <&dpi_out>;
+					};
+				};
+			};
+		};
+	};
+};
