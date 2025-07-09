@@ -3,7 +3,7 @@
 ⚠️⚠️⚠️
 ## Note: There are some missing device tree files for RaspberryPi CM5 for the current PINNOS, but I have managed to make multiboot work on the zero version of HackberryPi, so technically just wait for PINN to update the kernel for CM5 and it should work
 
-```Step1``` Download the PINN OS from the pi imager(main folder-> Misc utility images-> PINN)  
+```Step1``` Download the PINN OS from the pi imager(main folder-> Misc utility images-> [PINN](https://github.com/procount/pinn/tree/master))  
 ```Step2``` Copy the following content into the config.txt and override  
 ```Step3``` Insert the TF card into the HackberryPi_CM5 and power it on  
 
