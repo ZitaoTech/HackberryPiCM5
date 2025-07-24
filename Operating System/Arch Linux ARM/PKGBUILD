@@ -1,0 +1,23 @@
+pkgname=linux-firmware-cm5
+pkgver=20250724
+pkgrel=1
+pkgdesc="Custom firmware for CM5, provides linux-firmware"
+arch=('aarch64')
+provides=('linux-firmware' 'firmware-raspberrypi')
+conflicts=('linux-firmware' 'linux-firmware-amdgpu' 'linux-firmware-atheros' 'linux-firmware-broadcom' 'linux-firmware-cirrus' 'linux-firmware-intel' 'linux-firmware-mediatek' 'linux-firmware-nvidia' 'linux-firmware-other' 'linux-firmware-radeon' 'linux-firmware-realtek' 'firmware-raspberrypi')
+license=('custom')
+source=("firmware.tar")
+sha256sums=('SKIP')
+
+options=('!strip')
+
+package() {
+    cd "$srcdir"
+    tar -xvf firmware.tar
+
+    install -dm755 "$pkgdir/etc/alternatives"
+    cp -r alternatives/* "$pkgdir/etc/alternatives/"
+
+    install -dm755 "$pkgdir/usr/lib/firmware"
+    cp -r firmware/* "$pkgdir/usr/lib/firmware/"
+}
