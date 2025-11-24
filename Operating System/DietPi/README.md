@@ -1,9 +1,13 @@
-Install Dietpi on HackberrPi_CM5
+# Install Dietpi on HackberrPi_CM5
 
-Step 1 Download the Raspberry pi 5 DietPi Image from here https://dietpi.com/#downloadinfo
-Step 2 Flash the downloaded image into a TF card
-Step 3 Copy the following content into the config.txt and override
-Step 4 Insert the TF card into the HackberryPi_CM5 and power it on, wait a few seconds and you can see it booting
+``Step 1`` Download the Raspberry pi 5 DietPi Image from here https://dietpi.com/#downloadinfo
+
+``Step 2`` Flash the downloaded image into a TF card
+
+``Step 3`` Copy the following content into the config.txt and override
+
+``Step 4`` Insert the TF card into the HackberryPi_CM5 and power it on, wait a few seconds and you can see it booting
+
 
 ```sh
 # Docs: https://www.raspberrypi.com/documentation/computers/config_txt.html
