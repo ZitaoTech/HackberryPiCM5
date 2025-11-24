@@ -5,7 +5,7 @@ Step 2 Flash the downloaded image into a TF card
 Step 3 Copy the following content into the config.txt and override
 Step 4 Insert the TF card into the HackberryPi_CM5 and power it on, wait a few seconds and you can see it booting
 
-
+```sh
 # Docs: https://www.raspberrypi.com/documentation/computers/config_txt.html
 # Overlays: https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README
 
@@ -114,7 +114,7 @@ arm_64bit=1
 dtoverlay=dwc2,dr_mode=host
 dtoverlay=vc4-kms-v3d
 dtoverlay=vc4-kms-dpi-hyperpixel4sq
-
+```
 
 
 
