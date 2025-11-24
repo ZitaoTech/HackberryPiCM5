@@ -1,0 +1,125 @@
+# Install Dietpi on HackberrPi_CM5
+
+``Step 1`` Download the Raspberry pi 5 DietPi Image from here https://dietpi.com/#downloadinfo
+
+``Step 2`` Flash the downloaded image into a TF card
+
+``Step 3`` Copy the following content into the config.txt and override
+
+``Step 4`` Insert the TF card into the HackberryPi_CM5 and power it on, wait a few seconds and you can see it booting
+
+
+```sh
+# Docs: https://www.raspberrypi.com/documentation/computers/config_txt.html
+# Overlays: https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README
+
+#-------Display---------
+# Max allocated framebuffers: Set to "0" in headless mode to reduce memory usage
+# - Defaults to "2" on RPi4 and "1" on earlier RPi models
+#max_framebuffers=0
+
+# If you get no picture, set the following to "1" to apply most compatible HDMI settings.
+#hdmi_safe=1
+
+# Uncomment to adjust the HDMI signal strength if you have interferences, blanking, or no display.
+# - Ranges from "0" to "11", use values above "7" only if required, e.g. with very long HDMI cable.
+# - Default on first RPi1 A/B is "2", else "5", on RPi4 this setting is ignored.
+#config_hdmi_boost=5
+
+# Uncomment if HDMI display is not detected and composite is being outputted.
+#hdmi_force_hotplug=1
+
+# Uncomment to disable HDMI even if plugged, e.g. to force composite output.
+#hdmi_ignore_hotplug=1
+
+# Uncomment to force a console size. By default it will be display's size minus overscan.
+#framebuffer_width=1280
+#framebuffer_height=720
+
+# Uncomment to enable SDTV/composite output on RPi4. This has no effect on previous RPi models.
+#enable_tvout=1
+# SDTV mode
+#sdtv_mode=0
+
+# Uncomment to force a specific HDMI mode (this will force VGA).
+#hdmi_group=1
+#hdmi_mode=1
+
+# Uncomment to force an HDMI mode rather than DVI. This enables HDMI audio in DMT modes.
+#hdmi_drive=2
+
+# Set "hdmi_blanking=1" to allow the display going into standby after 10 minutes without input.
+# With default value "0", the display shows a blank screen instead, but will not go into standby.
+# NB: Some legacy OpenMAX applications (OMXPlayer) cannot wake screens from real standby.
+#hdmi_blanking=1
+
+# Set to "1" if your display has a black border of unused pixels visible.
+disable_overscan=1
+
+# Uncomment the following to adjust overscan.
+# Use positive numbers if console goes off screen, and negative if there is too much border.
+#overscan_left=16
+#overscan_right=16
+#overscan_top=16
+#overscan_bottom=16
+
+# Rotation
+#display_hdmi_rotate=0
+#lcd_rotate=0
+
+#-------RPi camera module-------
+#start_x=1
+#disable_camera_led=1
+
+#-------GPU memory splits-------
+#gpu_mem_256=16
+#gpu_mem_512=16
+#gpu_mem_1024=16
+
+#-------Boot splash screen------
+disable_splash=1
+
+#-------Onboard sound-----------
+dtparam=audio=off
+
+#-------I2C-------------
+#dtparam=i2c_arm=off
+#dtparam=i2c_arm_baudrate=100000
+
+#-------SPI-------------
+#dtparam=spi=off
+
+#-------Serial/UART-----
+# NB: "enable_uart=1" will enforce "core_freq=250" on RPi models with onboard WiFi.
+#enable_uart=1
+
+#-------SD card HPD-----
+# Comment to enable SD card hot-plug detection, while booting via USB or network.
+# NB: This causes constant CPU load and kernel errors when no SD card is inserted.
+dtparam=audio=on
+
+
+#-------Overclock-------
+#temp_limit=65
+#initial_turbo=20
+
+#over_voltage=0
+#arm_freq=900
+#core_freq=250
+#sdram_freq=400
+
+#over_voltage_min=0
+#arm_freq_min=300
+#core_freq_min=250
+#sdram_freq_min=400
+arm_64bit=1
+
+[all]
+dtoverlay=dwc2,dr_mode=host
+dtoverlay=vc4-kms-v3d
+dtoverlay=vc4-kms-dpi-hyperpixel4sq
+```
+
+
+
+
