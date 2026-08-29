@@ -18,6 +18,8 @@
 					#size-cells = <0>;
 					compatible = "edt,edt-ft5406";
 					reg = <0x48>;
+					pinctrl-names = "default";
+					pinctrl-0 = <&touch_int_pins>;
 					interrupt-parent = <&gpio>;
 					interrupts = <27 0x2008>;
 					touchscreen-size-x = <720>;
@@ -27,6 +29,17 @@
 		};
 	};
 	
+	fragment@3 {
+		target = <&rp1_gpio>;
+		__overlay__ {
+			touch_int_pins: touch_int_pins {
+				function = "gpio";
+				pins = "gpio27";
+				bias-pull-up;
+			};
+		};
+	};
+
 	fragment@1 {
 		target = <&dpi>;
 		__overlay__ {
