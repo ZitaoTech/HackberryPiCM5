@@ -32,3 +32,20 @@ Here is the solution to fix that:
 ```sh
 dtoverlay=hackberrypi
 ```
+
+# Fix lines or flicker after the screen sleeps
+
+The OS has no control over this panel's power or backlight, so when the OS blanks the screen (screen blanking / DPMS) it stops the DPI signal while the backlight stays on. The panel is then no longer refreshed, and the last image decays into lines and flicker instead of going black.
+
+The fix is to disable screen blanking so the DPI signal never stops:
+
+On Raspberry Pi OS, run ```sudo raspi-config``` and choose ```Display Options``` → ```Screen Blanking``` → ```No```.
+
+On other systems that use LightDM (for example Kali), create ```/etc/lightdm/lightdm.conf.d/50-no-blanking.conf``` with:
+```sh
+[Seat:*]
+xserver-command=X -s 0 -dpms
+```
+and turn off display power management in the desktop's power settings. A screensaver that only shows a black screen is fine, because it keeps the signal running.
+
+If the screen also flickers while you are using it, check the touch interrupt: run ```grep edt-ft5406 /proc/interrupts``` twice a few seconds apart without touching the screen. If the count climbs by hundreds, add ```gpio=27=ip,pu``` to ```/boot/firmware/config.txt``` (see pull request #48).
